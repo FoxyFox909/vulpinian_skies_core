@@ -1,10 +1,14 @@
 package com.floofappreciationclub.vulpinian_skies_core;
 
+import com.floofappreciationclub.vulpinian_skies_core.entity.EtherealGrenadeEntity;
+import com.floofappreciationclub.vulpinian_skies_core.init.GunItems;
 import com.floofappreciationclub.vulpinian_skies_core.init.ItemInit;
+import com.floofappreciationclub.vulpinian_skies_core.init.MunitionEntityInit;
+import com.floofappreciationclub.vulpinian_skies_core.init.MunitionItemInit;
 import com.mrcrayfish.guns.common.ProjectileManager;
-import com.mrcrayfish.guns.entity.GrenadeEntity;
-import com.mrcrayfish.guns.init.*;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,27 +50,10 @@ public class VulpinianSkiesCore
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         ItemInit.ITEMS.register(modEventBus);
-
-        MinecraftForge.EVENT_BUS.register(this);
+        //GunItems.REGISTER.register(modEventBus);
+        MunitionItemInit.ITEMS.register(modEventBus);
+        MunitionEntityInit.ENTITIES.register(modEventBus);
     }
-
-
-    /*private void onCommonSetup(FMLCommonSetupEvent event)
-    {
-        event.enqueueWork(() ->
-        {
-            PacketHandler.init();
-            ProjectileManager.getInstance().registerFactory(ItemInit.ETHEREALGRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
-            //ProjectileManager.getInstance().registerFactory(ModItems.MISSILE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new MissileEntity(ModEntities.MISSILE.get(), worldIn, entity, weapon, item, modifiedGun));
-        });
-    }*/
-
-   /* private void setup(FMLCommonSetupEvent event) {
-        ProjectileManager.getInstance().registerFactory(ItemInit.ETHEREALGRENADE.get(), ((worldIn, entity, weapon, item, modifiedGun) -> {
-            return new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
-        });
-    }*/
-
 
     private void setup(final FMLCommonSetupEvent event)
     {
@@ -74,8 +61,8 @@ public class VulpinianSkiesCore
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
-        ProjectileManager.getInstance().registerFactory(ItemInit.ETHEREALGRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> {
-            return new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun);
+        ProjectileManager.getInstance().registerFactory((Item)MunitionItemInit.ETHEREALGRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> {
+            return new EtherealGrenadeEntity((EntityType)MunitionEntityInit.ETHEREAL_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun);
         });
     }
 

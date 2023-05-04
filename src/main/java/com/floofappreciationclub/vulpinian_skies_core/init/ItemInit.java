@@ -2,6 +2,7 @@ package com.floofappreciationclub.vulpinian_skies_core.init;
 
 import com.floofappreciationclub.vulpinian_skies_core.VulpinianSkiesCore;
 //import net.minecraft.world.item.CreativeModeTab;
+import com.floofappreciationclub.vulpinian_skies_core.items.EtherealGrenadeItem;
 import com.floofappreciationclub.vulpinian_skies_core.items.FuelItem;
 import com.floofappreciationclub.vulpinian_skies_core.items.TeleportStaff;
 import com.mrcrayfish.guns.item.GrenadeItem;
@@ -34,7 +35,8 @@ public class ItemInit {
     public static final RegistryObject<Item> TELEPORT_STAFF = ITEMS.register("teleport_staff",
             () -> new TeleportStaff(new Item.Properties().tab(ModCreativeModeTab.FOX_TAB)));
 
-    public static final RegistryObject<Item> ETHEREALGRENADE = ITEMS.register("ethereal_grenade", () -> new GrenadeItem(new Item.Properties().tab(ModCreativeModeTab.FOX_TAB), 20 * 4));
+    //public static final RegistryObject<Item> ETHEREAL_GRENADE = ITEMS.register("ethereal_grenade", () -> new EtherealGrenadeItem(new Item.Properties().tab(ModCreativeModeTab.FOX_TAB), 20 * 4));
+    //public static final RegistryObject<Item> ETHEREAL_GRENADE = REGISTER.register("ethereal_grenade", () -> new EtherealGrenadeItem(new Item.Properties().tab(ModCreativeModeTab.FOX_TAB), 20 * 4));
 
   /*  public static class ModCreativeTab extends CreativeModeTab {
         private ModCreativeTab(int index, String label) {
