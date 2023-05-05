@@ -84,7 +84,7 @@ public class EtherealGrenadeEntity extends ProjectileEntity {
 
         for (int p = 0; p < 100; p++) {
             System.out.println("summoning particle");
-            ((ServerLevel)this.level).sendParticles(ParticleTypes.LAVA, this.getX() - 1.0 + this.random.nextDouble() * 2.0, this.getY(), this.getZ() - 1.0 + this.random.nextDouble() * 2.0, 4, 0.0, 0.0, 0.0, 0.0);
+            ((ServerLevel)this.level).sendParticles(ParticleTypes.LAVA, this.getX() - 1.0 + this.random.nextDouble() * 2.0, this.getY(), this.getZ() - 1.0 + this.random.nextDouble() * 2.0, 4, 0.0, 1.0, 0.0, 0.5);
         }
         System.out.println("post boom: " + this.level.isClientSide);
         System.out.println("XYZ:" + this.position().x + " " + this.position().y + " " + this.position().z);
