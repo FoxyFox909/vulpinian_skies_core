@@ -45,7 +45,16 @@ public class EtherealGrenadeEntity extends ProjectileEntity {
     }
 
 
+    protected void soulFlameParticles () {
+        //System.out.println("Attempting Particle Class Creation");
+        //System.out.println("OnExpired Client Level is: " + this.level.isClientSide());
 
+        if (!this.level.isClientSide) {
+            for (int p = 0; p < 100; p++) {
+                ((ServerLevel) this.level).sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.getX() - 1.0 + this.random.nextDouble() * 2.0, this.getY(), this.getZ() - 1.0 + this.random.nextDouble() * 2.0, 4, 2.0, 1.0, 2.0, 0.5);
+            }
+        }
+    }
     /*private void particlesandsounds(BlockPos pos) {
         ((WorldServer) world).spawnParticle(EnumParticleTypes.FLAME, // particleType,
                 false, // long distance
@@ -71,34 +80,31 @@ public class EtherealGrenadeEntity extends ProjectileEntity {
     @Override
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
-        createExplosion(this, this.getDamage() / 2F, true);
+        createExplosion(this, this.getDamage() / 2.5F, false);
+        soulFlameParticles();
     }
 
     @Override
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
     {
-
-        //explosionParticles();
-        exploded = true;
-        createExplosion(this, this.getDamage() / 2F, false);
-
-        for (int p = 0; p < 100; p++) {
-            System.out.println("summoning particle");
-            ((ServerLevel)this.level).sendParticles(ParticleTypes.LAVA, this.getX() - 1.0 + this.random.nextDouble() * 2.0, this.getY(), this.getZ() - 1.0 + this.random.nextDouble() * 2.0, 4, 0.0, 1.0, 0.0, 0.5);
-        }
-        System.out.println("post boom: " + this.level.isClientSide);
-        System.out.println("XYZ:" + this.position().x + " " + this.position().y + " " + this.position().z);
-
-
-        //net.minecraft.world.WorldServer
-
-
+        createExplosion(this, this.getDamage() / 2.5F, false);
+        soulFlameParticles();
+        /*for (int p = 0; p < 100; p++) {
+            ((ServerLevel)this.level).sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.getX() - 1.0 + this.random.nextDouble() * 2.0, this.getY(), this.getZ() - 1.0 + this.random.nextDouble() * 2.0, 4, 2.0, 1.0, 2.0, 0.5);
+        }*/
     }
 
     @Override
     public void onExpired()
     {
-        createExplosion(this, this.getDamage() / 2F, true);
+
+        //System.out.println("PRE EXPLOSION OnExpired Client Level is: " + this.level.isClientSide);
+        soulFlameParticles();
+        createExplosion(this, this.getDamage() / 2.5F, false);
+
+        //System.out.println("OnExpired Client Level is: " + this.level.isClientSide);
+
+       // ((ServerLevel)this.level).sendParticles(ParticleTypes.SOUL_FIRE_FLAME, this.getX() - 1.0 + this.random.nextDouble() * 2.0, this.getY(), this.getZ() - 1.0 + this.random.nextDouble() * 2.0, 4, 2.0, 1.0, 2.0, 0.5);
     }
 
 
