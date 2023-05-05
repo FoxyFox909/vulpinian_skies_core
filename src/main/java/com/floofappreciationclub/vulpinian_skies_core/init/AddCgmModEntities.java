@@ -19,6 +19,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.BiFunction;
 
+@Deprecated
 public class AddCgmModEntities extends ModEntities {
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
 

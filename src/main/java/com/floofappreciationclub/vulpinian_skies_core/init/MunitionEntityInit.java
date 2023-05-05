@@ -4,6 +4,8 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 import com.floofappreciationclub.vulpinian_skies_core.Reference;
+
+//import com.floofappreciationclub.vulpinian_skies_core.entity.ThrowableEtherealGrenadeEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -14,10 +16,12 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import com.floofappreciationclub.vulpinian_skies_core.entity.EtherealGrenadeEntity;
+import com.floofappreciationclub.vulpinian_skies_core.entity.ThrowableEtherealGrenadeEntity;
 
 public class MunitionEntityInit {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
     public static final RegistryObject<EntityType<EtherealGrenadeEntity>> ETHEREAL_GRENADE = registerBasic("ethereal_grenade", EtherealGrenadeEntity::new);
+    public static final RegistryObject<EntityType<ThrowableEtherealGrenadeEntity>> THROWABLE_ETHEREAL_GRENADE = registerBasic("throwable_ethereal_grenade", ThrowableEtherealGrenadeEntity::new);
 
     private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function)
     {

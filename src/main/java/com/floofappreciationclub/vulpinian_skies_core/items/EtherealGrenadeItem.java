@@ -1,6 +1,6 @@
 package com.floofappreciationclub.vulpinian_skies_core.items;
 
-import com.mrcrayfish.guns.entity.ThrowableGrenadeEntity;
+import com.floofappreciationclub.vulpinian_skies_core.entity.ThrowableEtherealGrenadeEntity;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.AmmoItem;
 import net.minecraft.world.entity.LivingEntity;
@@ -61,7 +61,7 @@ public class EtherealGrenadeItem extends AmmoItem {
         {
             if(!(entityLiving instanceof Player) || !((Player) entityLiving).isCreative())
                 stack.shrink(1);
-            ThrowableGrenadeEntity grenade = this.create(worldIn, entityLiving, 0);
+            ThrowableEtherealGrenadeEntity grenade = this.create(worldIn, entityLiving, 0);
             grenade.onDeath();
             if(entityLiving instanceof Player)
             {
@@ -81,7 +81,7 @@ public class EtherealGrenadeItem extends AmmoItem {
             {
                 if(!(entityLiving instanceof Player) || !((Player) entityLiving).isCreative())
                     stack.shrink(1);
-                ThrowableGrenadeEntity grenade = this.create(worldIn, entityLiving, this.maxCookTime - duration);
+                ThrowableEtherealGrenadeEntity grenade = this.create(worldIn, entityLiving, this.maxCookTime - duration);
                 grenade.shootFromRotation(entityLiving, entityLiving.getXRot(), entityLiving.getYRot(), 0.0F, Math.min(1.0F, duration / 20F), 1.0F);
                 worldIn.addFreshEntity(grenade);
                 this.onThrown(worldIn, grenade);
@@ -93,9 +93,9 @@ public class EtherealGrenadeItem extends AmmoItem {
         }
     }
 
-    public ThrowableGrenadeEntity create(Level world, LivingEntity entity, int timeLeft)
+    public ThrowableEtherealGrenadeEntity create(Level world, LivingEntity entity, int timeLeft)
     {
-        return new ThrowableGrenadeEntity(world, entity, timeLeft);
+        return new ThrowableEtherealGrenadeEntity(world, entity, timeLeft);
     }
 
     public boolean canCook()
@@ -103,7 +103,7 @@ public class EtherealGrenadeItem extends AmmoItem {
         return true;
     }
 
-    protected void onThrown(Level world, ThrowableGrenadeEntity entity)
+    protected void onThrown(Level world, ThrowableEtherealGrenadeEntity entity)
     {
     }
 }

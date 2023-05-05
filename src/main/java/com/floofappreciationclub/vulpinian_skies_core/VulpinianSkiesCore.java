@@ -1,7 +1,6 @@
 package com.floofappreciationclub.vulpinian_skies_core;
 
 import com.floofappreciationclub.vulpinian_skies_core.entity.EtherealGrenadeEntity;
-import com.floofappreciationclub.vulpinian_skies_core.init.GunItems;
 import com.floofappreciationclub.vulpinian_skies_core.init.ItemInit;
 import com.floofappreciationclub.vulpinian_skies_core.init.MunitionEntityInit;
 import com.floofappreciationclub.vulpinian_skies_core.init.MunitionItemInit;
@@ -61,7 +60,7 @@ public class VulpinianSkiesCore
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
-        ProjectileManager.getInstance().registerFactory((Item)MunitionItemInit.ETHEREALGRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> {
+        ProjectileManager.getInstance().registerFactory((Item)MunitionItemInit.ETHEREAL_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> {
             return new EtherealGrenadeEntity((EntityType)MunitionEntityInit.ETHEREAL_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun);
         });
     }
